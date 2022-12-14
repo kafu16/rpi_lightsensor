@@ -19,7 +19,7 @@ def plot_sensor_data(dir_csv):
     frame1.axes.xaxis.set_ticklabels([])
 
     plt.grid(True)
-    plt.title("title")
+    plt.title("")
     plt.legend(loc="upper left", bbox_to_anchor=[0.65, 1.4], ncol=1, shadow=True, fancybox=True)
 
     plt.subplot(212)
