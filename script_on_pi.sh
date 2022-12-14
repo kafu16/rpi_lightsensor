@@ -11,5 +11,5 @@ echo "STARTING MEASUREMENT"
 # execute script that writes sensor data to .csv-file
 python3 write_from_tsl2591.py
 
-echo "MEASUREMENT FINISHED"
+
 exit
