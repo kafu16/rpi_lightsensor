@@ -14,12 +14,84 @@
                 <nav><ul>
                     <li><a href="./category/home.html">Home</a></li>
                     <li><a href="./category/install-os-on-rpi.html">Install OS on rpi</a></li>
+                    <li><a href="./category/misc.html">misc</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="./home.html">Home</a></h1>
+                    <h1 class="entry-title"><a href="./execute-measurement.html">Execute measurement</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2022-12-16T12:55:00+01:00">
+                Published: Fr 16 Dezember 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="./author/brandnern.html">BrandnerN</a>
+        </address>
+<p>In <a href="./category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info --><p>Important: The local host and the RPi have to be in the same local network
+(e.g. connect both local host and RPi via LAN-Cable to a local network.) The ip-address
+of the RPi is then static.</p>
+<h3>How to run the script in order to execute a measurement:</h3>
+<p><code>./measure_plot.sh</code>
+type in password   <br>
+Measurement starts after password is entered
+<code>Ctrl-C</code> to stop the measurement
+type in password again (in order to copy .csv-file via rsync to host)
+plot_sensor_data.pdf is created on local machine</p>
+<p>There is a time lag of the print statements reporting the values of every single
+measurement. To get the values of the measurements reported immediately:<br>
+<code>ssh pi@130.149.244.206</code>    <br>
+execute write_from_tsl2591.py on RPi  <br>
+To create the plot in a second step  <br>
+delete <code>ssh pi@$ip_address 'bash -s' &lt; script_on_pi.sh</code> in measure_plot.sh    <br>
+execute measure_plot.sh as described above.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="./software-installation.html" rel="bookmark"
+                           title="Permalink to Software installation">Software installation</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2022-12-16T12:50:00+01:00">
+                Published: Fr 16 Dezember 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="./author/brandnern.html">BrandnerN</a>
+        </address>
+<p>In <a href="./category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info -->                <p>This is tested on Ubuntu 20.04 LTS   </p>
+<h3>Information of the manufacturer:</h3>
+<p><a href="https://github.com/adafruit/Adafruit_CircuitPython_TSL2591">repo</a><br>
+<a href="https://docs.circuitpython.org/projects/tsl2591/en/latest/">docs</a></p>
+<h3>Install Adafruit library and driver bundle via</h3>
+<p><code>pip3 install adafruit-circuitpython-lis3dh</code><br>
+(see <a href="https://github.com/adafruit/Adafruit_CircuitPython_Bundle">https://github.com/adafruit/Adafruit_CircuitPython_Bundle</a> for more information).</p>
+<h3>Istall system-wide driver for TSL</h3>
+<p><code>sudo pip3 install adafruit-circuitpython-tsl2591</code>  <br>
+(see <a href="https://docs.circuitpython.org/projects/tsl2591/en/latest/index.html">https://docs.circuitpython.org/projects/tsl2591/en …</a></p>
+                <a class="readmore" href="./software-installation.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="./home.html" rel="bookmark"
+                           title="Permalink to Home">Home</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2022-12-16T00:00:00+01:00">
                 Published: Fr 16 Dezember 2022
@@ -30,28 +102,10 @@
         </address>
 <p>In <a href="./category/home.html">Home</a>.</p>
 
-</footer><!-- /.post-info --><p>This documentation contains a step-by-step manual how to set up a Raspberry Pi (RPi) and connect it to the Adafruit TSL2591 High Dynamic Range Digital Light Sensor (TSL), install the necessary software on the RPi for that and set up the codebase on <a href="https://github.com/kafu16/rpi_lightsensor">https://github.com/kafu16/rpi_lightsensor</a> for invoking a measurement from a local host  via ssh on the RPi and generate a plot of this
-measurement on the local host.</p>
-<p>Just follow the steps below:<br>
-<a href="./pages/install-os-on-rpi.html">1. Install OS on Raspberry Pi</a><br>
-<a href="./pages/how-to-connect-adafruit-tsl2591-high-dynamic-range-digital-light-sensor-to-a-raspberry-pi.html">2. Connect Adafruit TSL2591 High Dynamic Range Digital Light Sensor to a Raspberry Pi</a><br>
-<a href="./pages/software-installation.html">3. Software installation</a>  <br>
-<a href="./pages/execute-measurement.html">4. Execute measurement</a>  </p>
-<p>Further information on the light sensor by the manufacturer can be found <a href="https://learn.adafruit.com/adafruit-tsl2591?view=all">here</a>.</p>
-<h3>Example 15</h3>
-<p>In the following picture, the grayscale varies sinusoidally<br>
-<img alt="image cannot be displayed" src="images/grayscales.png" title="grayscales">
-Image taken from <a href="https://www.cns.nyu.edu/~david/courses/perception/lecturenotes/channels/channels.html">here</a>.</p>
-<p>We projected similar picture using a beamer and measured the grayscales along the
-horizontal axis getting
-<img alt="image cannot be displayed" src="images/plot_sensor_data.svg" title="OS for Raspberry Pi"><br>
-This figure can be downloaded <a href="./pdfs/plot_sensor_data.pdf">here</a>.</p>
-<p><a href="./install-os-on-rpi.html">5. Install OS on Raspberry Pi</a></p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>This documentation contains a step-by-step manual how to set up a Raspberry Pi (RPi) and connect it to the Adafruit TSL2591 High Dynamic Range Digital Light Sensor (TSL), install the necessary software on the RPi for that and set up the codebase on <a href="https://github.com/kafu16/rpi_lightsensor">https://github.com/kafu16/rpi_lightsensor</a> for invoking …</p>
+                <a class="readmore" href="./home.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -74,6 +128,35 @@ This figure can be downloaded <a href="./pdfs/plot_sensor_data.pdf">here</a>.</p
 <img alt="image cannot be displayed" src="images/os_rpi.png" title="OS for Raspberry Pi"><br>
 This is shipped with Python 3.7.3.</p>
                 <a class="readmore" href="./install-os-on-rpi.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="./how-to-connect-adafruit-tsl2591-high-dynamic-range-digital-light-sensor-to-a-raspberry-pi.html" rel="bookmark"
+                           title="Permalink to How to connect Adafruit TSL2591 High Dynamic Range Digital Light Sensor to a Raspberry Pi">How to connect Adafruit TSL2591 High Dynamic Range Digital Light Sensor to a Raspberry Pi</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2022-12-15T14:50:00+01:00">
+                Published: Do 15 Dezember 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="./author/brandnern.html">BrandnerN</a>
+        </address>
+<p>In <a href="./category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Use a <a href="https://learn.adafruit.com/introducing-adafruit-stemma-qt/what-is-stemma-qt">STEMMA cable</a>
+to connect the TSL to the RPi.</p>
+<p><a href="https://learn.adafruit.com/adafruit-tsl2591?view=all#python-computer-wiring-2997855">Here</a> is explained in more detail how to connect TSL to a RPi.</p>
+<p><img alt="image cannot be displayed" src="/images/wiring_rpi.png" title="Wiring of TSL to Raspberry Pi"><br>
+Taken from <a href="https://learn.adafruit.com/adafruit-tsl2591?view=all#step-2997856">here</a>.</p>
+<p><img alt="image cannot be displayed" src="/images/gpio_pins_rpi.png" title="GPIO pins of Raspberry Pi">
+These are the GPIO pins (general-purpose input/output) of a RPi (taken from <a href="https://www.raspberrypi.com/documentation/computers/raspberry-pi.html">here</a>).</p>
+<p><a href="https://learn.adafruit.com/adafruit-tsl2591?view=all#step-3073289">Here</a> is explained how to connect TSL to devices …</p>
+                <a class="readmore" href="./how-to-connect-adafruit-tsl2591-high-dynamic-range-digital-light-sensor-to-a-raspberry-pi.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
