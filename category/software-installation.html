@@ -17,9 +17,9 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="../4-execute-measurement.html">4 Execute measurement</a></h1>
+                    <h1 class="entry-title"><a href="../3-software-installation.html">3 Software installation</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2022-12-16T12:55:00+01:00">
+        <abbr class="published" title="2022-12-16T00:00:00+01:00">
                 Published: Fr 16 Dezember 2022
         </abbr>
 
@@ -28,47 +28,7 @@
         </address>
 <p>In <a href="../category/software-installation.html">Software installation</a>.</p>
 
-</footer><!-- /.post-info --><p>Important: The local host and the RPi have to be in the same local network
-(e.g. connect both local host and RPi via LAN-Cable to a local network.) The ip-address
-of the RPi is then static.</p>
-<h3>How to run the script in order to execute a measurement:</h3>
-<p><code>./measure_plot.sh</code>
-type in password   <br>
-Measurement starts after password is entered
-<code>Ctrl-C</code> to stop the measurement
-type in password again (in order to copy .csv-file via rsync to host)
-plot_sensor_data.pdf is created on local machine</p>
-<p>There is a time lag of the print statements reporting the values of every single
-measurement. To get the values of the measurements reported immediately:<br>
-<code>ssh pi@130.149.244.206</code>    <br>
-execute write_from_tsl2591.py on RPi  <br>
-To create the plot in a second step  <br>
-delete <code>ssh pi@$ip_address 'bash -s' &lt; script_on_pi.sh</code> in measure_plot.sh    <br>
-execute measure_plot.sh as described above.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="../3-software-installation.html" rel="bookmark"
-                           title="Permalink to 3 Software installation">3 Software installation</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-12-16T12:50:00+01:00">
-                Published: Fr 16 Dezember 2022
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="../author/brandnern.html">BrandnerN</a>
-        </address>
-<p>In <a href="../category/software-installation.html">Software installation</a>.</p>
-
-</footer><!-- /.post-info -->                <p>This is tested on Ubuntu 20.04 LTS   </p>
+</footer><!-- /.post-info --><p>This is tested on Ubuntu 20.04 LTS   </p>
 <h3>Information of the manufacturer:</h3>
 <p><a href="https://github.com/adafruit/Adafruit_CircuitPython_TSL2591">repo</a><br>
 <a href="https://docs.circuitpython.org/projects/tsl2591/en/latest/">docs</a></p>
@@ -77,8 +37,52 @@ execute measure_plot.sh as described above.</p>                </article>
 (see <a href="https://github.com/adafruit/Adafruit_CircuitPython_Bundle">https://github.com/adafruit/Adafruit_CircuitPython_Bundle</a> for more information).</p>
 <h3>Istall system-wide driver for TSL</h3>
 <p><code>sudo pip3 install adafruit-circuitpython-tsl2591</code>  <br>
-(see <a href="https://docs.circuitpython.org/projects/tsl2591/en/latest/index.html">https://docs.circuitpython.org/projects/tsl2591/en …</a></p>
-                <a class="readmore" href="../3-software-installation.html">read more</a>
+(see <a href="https://docs.circuitpython.org/projects/tsl2591/en/latest/index.html">https://docs.circuitpython.org/projects/tsl2591/en/latest/index.html</a> for more information).</p>
+<h3>Activate I2C-GPIO</h3>
+<p><code>sudo raspi-config</code> in terminal of the pi<br>
+Go to "3 Interface Options"<br>
+Select "P5 I2C"  </p>
+<h3>Clone this <a href="https://github.com/kafu16/rpi_lightsensor.git">repository</a> on local machine (for Linux-users preferably in home directory)</h3>
+<p><code>git clone https://github.com/kafu16/rpi_lightsensor.git</code><br>
+If not cloned in home directory: Adapt the path in rpi_lightsensor/measure_plot.sh line 5
+that points to the directory where you cloned the repository (adapt the variable <code>local_repo</code>).  </p>
+<p>Parts of the script are adapted from a <a href="https://docs.circuitpython.org/projects/tsl2591/en/latest/examples.html">usage example</a> that can be downloaded <a href="https://github.com/adafruit/Adafruit_CircuitPython_TSL2591/blob/main/examples/tsl2591_simpletest.py">here</a>.</p>
+<p>Give the script exection permission  <br>
+<code>cd rpi_lightsensor</code>  <br>
+<code>chmod +x measure_plot.sh</code>  </p>
+<h3>On the RPi clone the same <a href="https://github.com/kafu16/rpi_lightsensor.git">repository</a> in the home directory. You should get a directory <code>/home/pi/rpi_lightsensor</code>.</h3>
+<h3>Activate ssh on the rpi</h3>
+<p>On rpi go to applications menu (top left)/Raspberry Pi Configuration/Interfaces<br>
+Select "Enable"    </p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="../4-execute-measurement.html" rel="bookmark"
+                           title="Permalink to 4 Execute measurement">4 Execute measurement</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2022-12-16T00:00:00+01:00">
+                Published: Fr 16 Dezember 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="../author/brandnern.html">BrandnerN</a>
+        </address>
+<p>In <a href="../category/software-installation.html">Software installation</a>.</p>
+
+</footer><!-- /.post-info -->                <p>Important: The local host and the RPi have to be in the same local network
+(e.g. connect both local host and RPi via LAN-Cable to a local network.) The ip-address
+of the RPi is then static.</p>
+<h3>How to run the script in order to execute a measurement:</h3>
+<p><code>./measure_plot.sh …</code></p>
+                <a class="readmore" href="../4-execute-measurement.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
